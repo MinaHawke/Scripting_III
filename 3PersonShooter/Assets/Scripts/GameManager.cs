@@ -16,7 +16,8 @@ public class GameManager : PersistentSingleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

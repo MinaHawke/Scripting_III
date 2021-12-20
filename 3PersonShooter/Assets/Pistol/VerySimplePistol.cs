@@ -73,7 +73,7 @@ public class VerySimplePistol : MonoBehaviour
         m_canShot = false;
 
         float accuracyModifier = (100 - m_currentAccuracy) / 1000;
-        Vector3 directionForward = m_raycastSpot.forward;
+        Vector3 directionForward = Camera.main.transform.forward;
         directionForward.x += UnityEngine.Random.Range(-accuracyModifier, accuracyModifier);
         directionForward.y += UnityEngine.Random.Range(-accuracyModifier, accuracyModifier);
         directionForward.z += UnityEngine.Random.Range(-accuracyModifier, accuracyModifier);
