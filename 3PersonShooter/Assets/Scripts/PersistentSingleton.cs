@@ -23,7 +23,7 @@ public class PersistentSingleton<T> : MonoBehaviour where T : Component
         }        
     }
 
-    protected virtual void Awake()
+    public virtual void Awake()
     {
         if (transform.parent != null)
             transform.parent = null;
