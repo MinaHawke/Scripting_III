@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 7}
   m_MinSize: {x: 875, y: 592}
   m_MaxSize: {x: 10000, y: 10000}
@@ -71,10 +71,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 881, y: 492}
-  m_MaxSize: {x: 16006, y: 14042}
+  m_MinSize: {x: 880, y: 492}
+  m_MaxSize: {x: 16005, y: 14042}
   vertical: 0
-  controlID: 108
+  controlID: 133
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -120,8 +120,8 @@ MonoBehaviour:
     y: 0
     width: 201
     height: 561
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -176,7 +176,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 592}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -249,10 +249,10 @@ MonoBehaviour:
     y: 0
     width: 1466
     height: 947
-  m_MinSize: {x: 605, y: 492}
-  m_MaxSize: {x: 12005, y: 14042}
+  m_MinSize: {x: 604, y: 492}
+  m_MaxSize: {x: 12004, y: 14042}
   vertical: 1
-  controlID: 41
+  controlID: 63
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -275,10 +275,10 @@ MonoBehaviour:
     y: 0
     width: 1466
     height: 561
-  m_MinSize: {x: 605, y: 221}
-  m_MaxSize: {x: 12005, y: 4021}
+  m_MinSize: {x: 604, y: 221}
+  m_MaxSize: {x: 12004, y: 4021}
   vertical: 0
-  controlID: 42
+  controlID: 64
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -369,22 +369,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/stylized 3d gun/prefabs
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/stylized 3d gun/prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\Repositorios GitHub\Scripting_III\3PersonShooter
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 39}
-    m_SelectedIDs: 38420000
-    m_LastClickedID: 16952
-    m_ExpandedIDs: 00000000aa410000ac410000ae410000b0410000b2410000b44100003c42000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: f0410000
+    m_LastClickedID: 16880
+    m_ExpandedIDs: 00000000ca410000cc410000ce410000d0410000d2410000d4410000e44100005050000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -412,7 +412,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000aa410000ac410000ae410000b0410000b2410000b4410000
+    m_ExpandedIDs: 00000000ca410000cc410000ce410000d0410000d2410000d4410000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -443,18 +443,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: modls
+      m_OriginalName: modls
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 16894
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 6}
     m_CreateAssetUtility:
@@ -533,20 +533,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 18430000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 20faffff26faffff30faffff50fbffff52fbffff
+      m_ExpandedIDs: 44a8ffff0eb2ffffacb3ffff74b5ffff36b9ffffceb9ffff24bdfffffabdffff7abeffff98bfffffeec0fffffac4ffff80c6ffffd8c6ffff26c9ffff12cbffff80f2ffff20faffff26faffff30faffff50fbffff52fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Weapon1
-        m_OriginalName: Weapon1
+        m_Name: Legs
+        m_OriginalName: Legs
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -1504
+        m_UserData: 35464
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -595,9 +595,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -12.304491, y: 1.307771, z: -12.811167}
+    m_Target: {x: -3.0640311, y: 3.7783785, z: -5.7169456}
     speed: 2
-    m_Value: {x: -12.304491, y: 1.307771, z: -12.811167}
+    m_Value: {x: -3.0640311, y: 3.7783785, z: -5.7169456}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -644,13 +644,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.28587618, y: -0.054589998, z: 0.016288929, w: 0.9565893}
+    m_Target: {x: 0.14893533, y: 0.134528, z: -0.020463126, w: 0.9794828}
     speed: 2
-    m_Value: {x: 0.28584662, y: -0.056023877, z: 0.016717443, w: 0.9564902}
+    m_Value: {x: 0.150398, y: 0.13449144, z: -0.020664051, w: 0.9792168}
   m_Size:
-    m_Target: 0.6702897
+    m_Target: 1.2247448
     speed: 2
-    m_Value: 0.67028975
+    m_Value: 1.2247448
   m_Ortho:
     m_Target: 0
     speed: 2
