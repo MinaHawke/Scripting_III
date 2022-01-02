@@ -9,6 +9,9 @@ public class FPSCharacterController : MonoBehaviour
     Vector3 m_playerCameraRotation;
     public float m_playerCameraRotationXLimit;
     public float m_playerCameraRotationSpeed;
+    public float jumpForce;
+    float currentYVelocity;
+    public float gravity = 9.8f;
     Camera m_playerCamera;
 
     //public float m_health;
@@ -26,6 +29,18 @@ public class FPSCharacterController : MonoBehaviour
     {
         Vector3 move = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
         move *= m_walkSpeed;
+        if (m_controller.isGrounded)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                currentYVelocity = jumpForce;
+            }
+        }
+        else
+        {
+            currentYVelocity -= gravity * Time.deltaTime;
+        }
+        move.y = currentYVelocity;
         m_controller.Move(move * Time.deltaTime);
 
         m_playerCameraRotation.y += Input.GetAxis("Mouse X") * m_playerCameraRotationSpeed;
