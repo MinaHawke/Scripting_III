@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class AlarmEnemy : Enemy
 {
+    [SerializeField] Transform alarma;
 
-    public override void ComprobarAlerta()
+
+    protected override void Act()
     {
-        base.ComprobarAlerta();
-        DarAlarma();
+        agent.SetDestination(alarma.position);
     }
 
-    public void DarAlarma()
+    public override void Update()
     {
-
+        base.Update();
+        if(alert && !agent.pathPending && agent.remainingDistance < 0.5f)
+        {
+            GameManager.Instance.AlertarATodosLosEnemigos();
+        }
     }
 }

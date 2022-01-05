@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,13 +14,15 @@ public class FPSCharacterController : MonoBehaviour
     float currentYVelocity;
     public float gravity = 9.8f;
     Camera m_playerCamera;
-
-    //public float m_health;
-    //public float stamina;
+    public static Action OnDamageTaken;
+    
+    public int m_health;    
+    public int m_maxHealth;    
 
     // Start is called before the first frame update
     void Start()
     {
+        m_health = m_maxHealth;
         m_controller = GetComponent<CharacterController>();
         m_playerCamera = GetComponentInChildren<Camera>();
     }
@@ -49,5 +52,21 @@ public class FPSCharacterController : MonoBehaviour
         m_playerCameraRotationXLimit);
         m_playerCamera.transform.localRotation = Quaternion.Euler(m_playerCameraRotation.x, 0, 0);
         transform.eulerAngles = new Vector2(0, m_playerCameraRotation.y);
+    }
+
+    public void RecibirImpacto()
+    {
+        
+        m_health --;
+        OnDamageTaken?.Invoke();
+        if(m_health <= 0)
+        {
+            Morir();
+        }
+    }
+
+    private void Morir()
+    {
+        GameManager.Instance.ReiniciarEscena();
     }
 }
