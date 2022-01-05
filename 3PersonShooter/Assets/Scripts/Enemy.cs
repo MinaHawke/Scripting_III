@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -13,11 +15,20 @@ public class Enemy : MonoBehaviour
     public float enemyHearingDistance;
     public float enemyAngleVision;
     public Animator animator;
+    public bool alertHearing;
+    public bool alertVision;
+    public bool alert;
+
+    public NavMeshAgent agent;
+    public Transform[] patrolPoints;
+    public int currentPatrolPoint;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         enemyActualHp = enemyHp;
+        if (!agent)
+            agent = GetComponent<NavMeshAgent>();
     }
     public virtual void RecibirDaño()
     {
@@ -32,39 +43,73 @@ public class Enemy : MonoBehaviour
         DeteccionOido();
         DeteccionVision();
     }
+
     public virtual void DeteccionVision()
     {
         RaycastHit infoImpact;
+        alertVision = false;
         if (Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) < enemyVisionDistance)
         {
             Vector3 direccionHaciaJugador = GameManager.Instance.Player.transform.position - transform.position;
             Vector3 direccionVisionEnemy = transform.forward;
-            if (Vector3.Angle(direccionHaciaJugador, direccionVisionEnemy)<= enemyAngleVision * 0.5)
+            if (Vector3.Angle(direccionHaciaJugador, direccionVisionEnemy) <= enemyAngleVision * 0.5)
             {
-                if(Physics.Raycast(transform.position,direccionHaciaJugador,out infoImpact, enemyVisionDistance))
+                if (Physics.Raycast(transform.position, direccionHaciaJugador, out infoImpact, enemyVisionDistance))
                 {
-                    if(infoImpact.transform == GameManager.Instance.Player.transform)
+                    if (infoImpact.transform == GameManager.Instance.Player.transform)
                     {
-                        Alerta();
+                        alertVision = true;
                     }
                 }
             }
         }
+        ComprobarAlerta();
     }
+
     public virtual void DeteccionOido()
     {
         if (Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) < enemyHearingDistance)
         {
-            Alerta();
+            alertHearing = true;
         }
+        else
+        {
+            alertHearing = false;
+        }
+        ComprobarAlerta();
     }
     public virtual void Morir()
     {
         animator.SetTrigger("morir");
-        Destroy(gameObject,2);
+        Destroy(gameObject, 2);
     }
-    public virtual void Alerta()
+    public virtual void ComprobarAlerta()
     {
+        alert = alertHearing || alertVision;
+    }
 
+    public virtual void Update()
+    {
+        DeteccionOido();
+        DeteccionVision();
+        Patrullar();
+    }
+
+    protected virtual void Patrullar()
+    {
+        if (!agent.pathPending && agent.remainingDistance < 0.5f && !alert)
+        {
+            currentPatrolPoint = (currentPatrolPoint + 1) % patrolPoints.Length;
+            agent.SetDestination(patrolPoints[currentPatrolPoint].position);
+        }
+        else if (alert)
+        {
+            Shoot();
+        }
+    }
+
+    protected virtual void Shoot()
+    {
+        print("Pium pium");
     }
 }

@@ -5,9 +5,9 @@ using UnityEngine;
 public class AlarmEnemy : Enemy
 {
 
-    public override void Alerta()
+    public override void ComprobarAlerta()
     {
-        base.Alerta();
+        base.ComprobarAlerta();
         DarAlarma();
     }
 
