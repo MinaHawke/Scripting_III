@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,11 +21,12 @@ public class VerySimplePistol : MonoBehaviour
     private float m_currentAccuracy;
     private float m_accuracy;
     private float m_accuracyRecoverPerSecond;
-
+    public static Action<int,int> OnShot;
     private void Start()
     {
         m_municionActual = m_municionMax;
         m_TiempoEntreDisparos = 1 / m_frecuenciaDeDisparos;
+        
     }
 
     private void Update()
@@ -41,6 +43,7 @@ public class VerySimplePistol : MonoBehaviour
                     print(m_municionActual);
                     Shot();
                     m_municionActual--;
+                    OnShot?.Invoke(m_municionActual, m_municionMax);
 
                 }
                 else
@@ -81,7 +84,7 @@ public class VerySimplePistol : MonoBehaviour
         m_currentAccuracy = Mathf.Clamp(m_currentAccuracy, 0, 100);
 
         Ray ray = new Ray(m_raycastSpot.position, directionForward);
-
+        
 
         RaycastHit hit;
 
@@ -92,6 +95,13 @@ public class VerySimplePistol : MonoBehaviour
             {
                 hit.rigidbody.AddForce(ray.direction * m_forceToApply);
                 Debug.Log("Hit");
+                
+            }
+            Enemy enemigo = hit.transform.GetComponent<Enemy>();
+            if (enemigo != null)
+            {
+                Debug.Log("Hit enemigo");
+                enemigo.RecibirDaño();
             }
         }
         Debug.DrawRay(m_raycastSpot.position, ray.direction, Color.red, 4);

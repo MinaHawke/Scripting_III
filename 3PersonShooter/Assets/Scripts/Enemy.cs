@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     public virtual void RecibirDaño()
     {
         enemyActualHp--;
-        if (enemyActualHp < 0)
+        if (enemyActualHp <= 0)
         {
             Morir();
         }
@@ -80,16 +80,23 @@ public class Enemy : MonoBehaviour
     }
     public virtual void Morir()
     {
-        animator.SetTrigger("morir");
+        if (animator)
+            animator.SetTrigger("morir");
         Destroy(gameObject, 2);
     }
     public virtual void ComprobarAlerta()
     {
-        alert = alertHearing || alertVision;
+        alert = (alertHearing || alertVision) && !GameManager.Instance.AlarmaDada;
+        if (alert)
+        {
+            transform.forward = (GameManager.Instance.Player.transform.position - transform.position).normalized;/*Vector3.Lerp(transform.forward, (GameManager.Instance.Player.transform.position - transform.position).normalized,)*/
+        }
     }
 
     public virtual void Update()
     {
+        if (enemyActualHp <= 0)
+            return;
         DeteccionOido();
         DeteccionVision();
         Patrullar();
@@ -99,17 +106,18 @@ public class Enemy : MonoBehaviour
     {
         if (!agent.pathPending && agent.remainingDistance < 0.5f && !alert)
         {
+            agent.isStopped = false;
             currentPatrolPoint = (currentPatrolPoint + 1) % patrolPoints.Length;
             agent.SetDestination(patrolPoints[currentPatrolPoint].position);
         }
         else if (alert)
         {
-            Shoot();
+            Act();
         }
     }
 
-    protected virtual void Shoot()
+    protected virtual void Act()
     {
-        print("Pium pium");
+
     }
 }
