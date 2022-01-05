@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ShootingEnemy : Enemy
 {
-    public override void Alerta()
+    public override void ComprobarAlerta()
     {
-        base.Alerta();
+        base.ComprobarAlerta();
         Disparar();
     }
 
