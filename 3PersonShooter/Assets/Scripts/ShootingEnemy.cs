@@ -7,8 +7,8 @@ public class ShootingEnemy : Enemy
     [SerializeField]
     float distanciaDisparo;
 
-    [SerializeField]
-    LayerMask playerLayer;
+    //[SerializeField]
+    //LayerMask playerLayer;
 
     [SerializeField]
     float tiempoEntreDisparos;
@@ -21,12 +21,12 @@ public class ShootingEnemy : Enemy
         {
             timer = 0;
             RaycastHit infoImpacto;
-            Vector3 direccion = (GameManager.Instance.Player.transform.position - transform.position);            
-            
-            Debug.DrawRay(transform.position + direccion.normalized, direccion, Color.red);
-            if (Physics.Raycast(transform.position /*+ direccion.normalized*/, direccion, out infoImpacto, distanciaDisparo,playerLayer))
+            Vector3 direccion = (GameManager.Instance.Player.transform.position - transform.position);
+            animator.SetTrigger("Shooting");
+            //Debug.DrawRay(transform.position + direccion.normalized, direccion, Color.red);
+            if (Physics.Raycast(transform.position /*+ direccion.normalized*/, direccion, out infoImpacto, distanciaDisparo))
             {
-                print(infoImpacto.transform);
+                //print(infoImpacto.transform);
                 if (infoImpacto.transform.TryGetComponent(out FPSCharacterController player))
                 {                    
                     player.RecibirImpacto();

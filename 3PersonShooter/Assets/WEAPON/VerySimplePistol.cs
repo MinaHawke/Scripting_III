@@ -17,10 +17,10 @@ public class VerySimplePistol : MonoBehaviour
     private float m_TiempoEntreDisparos;
     private float m_TiempoDesdeUltimoDisparo;
     public int m_frecuenciaDeDisparos = 4;
-    private int m_accuracyDropPerShot;
+    public int m_accuracyDropPerShot;
     private float m_currentAccuracy;
-    private float m_accuracy;
-    private float m_accuracyRecoverPerSecond;
+    public float m_accuracy;
+    public float m_accuracyRecoverPerSecond;
     public static Action<int,int> OnShot;
     private void Start()
     {
@@ -83,11 +83,11 @@ public class VerySimplePistol : MonoBehaviour
         m_currentAccuracy -= m_accuracyDropPerShot;
         m_currentAccuracy = Mathf.Clamp(m_currentAccuracy, 0, 100);
 
-        Ray ray = new Ray(m_raycastSpot.position, directionForward);
+        Ray ray = new Ray(Camera.main.transform.position, directionForward);
         
-
+        
         RaycastHit hit;
-
+        
         if (Physics.Raycast(ray, out hit, m_weaponRange))
         {
             Debug.Log("Hit " + hit.transform.name);
@@ -104,7 +104,7 @@ public class VerySimplePistol : MonoBehaviour
                 enemigo.RecibirDaño();
             }
         }
-        Debug.DrawRay(m_raycastSpot.position, ray.direction, Color.red, 4);
+        Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.red, 4);
 
         GetComponent<AudioSource>().PlayOneShot(m_fireSound);
     }

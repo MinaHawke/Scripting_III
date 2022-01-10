@@ -18,17 +18,24 @@ public class Enemy : MonoBehaviour
     public bool alertHearing;
     public bool alertVision;
     public bool alert;
-
+    float maxSpeed;
     public NavMeshAgent agent;
     public Transform[] patrolPoints;
     public int currentPatrolPoint;
+    public float waitTimeOnArrival = 1;
+    private bool isWaiting;
+    Vector3 posicionUltimoFrame;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        posicionUltimoFrame = transform.position;
+        if (!animator)
+            animator = GetComponentInChildren<Animator>();
         enemyActualHp = enemyHp;
         if (!agent)
             agent = GetComponent<NavMeshAgent>();
+        maxSpeed = agent.speed;
     }
     public virtual void RecibirDaño()
     {
@@ -100,6 +107,10 @@ public class Enemy : MonoBehaviour
         DeteccionOido();
         DeteccionVision();
         Patrullar();
+        float velocidadActual = (transform.position - posicionUltimoFrame).magnitude / Time.deltaTime;
+        //print(velocidadActual);
+        animator.SetFloat("Movimiento", (velocidadActual) / agent.speed);
+        posicionUltimoFrame = transform.position;
     }
 
     protected virtual void Patrullar()
@@ -107,14 +118,25 @@ public class Enemy : MonoBehaviour
         if (!agent.pathPending && agent.remainingDistance < 0.5f && !alert)
         {
             agent.isStopped = false;
-            currentPatrolPoint = (currentPatrolPoint + 1) % patrolPoints.Length;
-            agent.SetDestination(patrolPoints[currentPatrolPoint].position);
+            
+            if (!isWaiting)
+                StartCoroutine(WaitOnPatrol());
         }
         else if (alert)
         {
             Act();
         }
     }
+
+    IEnumerator WaitOnPatrol()
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(waitTimeOnArrival);
+        currentPatrolPoint = (currentPatrolPoint + 1) % patrolPoints.Length;
+        agent.SetDestination(patrolPoints[currentPatrolPoint].position);
+        isWaiting = false;
+    }
+
 
     protected virtual void Act()
     {

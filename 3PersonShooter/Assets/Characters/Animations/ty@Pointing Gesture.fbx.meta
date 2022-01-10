@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 1eacec99be3bb6343957efbcfcc66148
+guid: bd449d4f8f920dc41b02e76b54e1da70
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Dwarf Idle
+    second: Pointing Gesture
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -38,11 +38,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Dwarf Idle
+      name: Pointing Gesture
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 133
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
