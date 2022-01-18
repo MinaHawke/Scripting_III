@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44359747, g: 0.49291408, b: 0.57249075, a: 1}
+  m_IndirectSpecularColor: {r: 0.44359705, g: 0.4929136, b: 0.57248974, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -702,7 +702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -35}
+  m_AnchoredPosition: {x: 0, y: 180}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &884258790
@@ -1209,9 +1209,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1451367098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383915a8e81f8c54983af58f8af39886, type: 3}
+  m_Script: {fileID: 11500000, guid: 021850779ac9c7040b7478ad02fca377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_raycastSpot: {fileID: 0}
+  m_damage: 80
+  m_forceToApply: 20
+  m_weaponRange: 9999
+  m_crosshairTexture: {fileID: 0}
+  m_fireSound: {fileID: 0}
+  m_municionActual: 0
+  m_municionMax: 12
+  m_frecuenciaDeDisparos: 4
+  m_accuracyDropPerShot: 0
+  m_accuracy: 0
+  m_accuracyRecoverPerSecond: 0
 --- !u!114 &1451367101
 MonoBehaviour:
   m_ObjectHideFlags: 0
