@@ -1209,21 +1209,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1451367098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 021850779ac9c7040b7478ad02fca377, type: 3}
+  m_Script: {fileID: 11500000, guid: 383915a8e81f8c54983af58f8af39886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_raycastSpot: {fileID: 0}
-  m_damage: 80
-  m_forceToApply: 20
-  m_weaponRange: 9999
-  m_crosshairTexture: {fileID: 0}
-  m_fireSound: {fileID: 0}
-  m_municionActual: 0
-  m_municionMax: 12
-  m_frecuenciaDeDisparos: 4
-  m_accuracyDropPerShot: 0
-  m_accuracy: 0
-  m_accuracyRecoverPerSecond: 0
 --- !u!114 &1451367101
 MonoBehaviour:
   m_ObjectHideFlags: 0
