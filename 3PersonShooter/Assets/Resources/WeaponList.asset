@@ -13,4 +13,39 @@ MonoBehaviour:
   m_Name: WeaponList
   m_EditorClassIdentifier: 
   weaponList:
-  - {fileID: 11400000, guid: 4eb93837a36192d4e9770458c2c97e6b, type: 2}
+  - m_name: littlepipi
+    m_damage: 10
+    m_forceToApply: 20
+    m_weaponRange: 9999
+    m_ammoCapacity: 12
+    m_rateOfShot: 4
+    m_fireSound: {fileID: 0}
+    m_realoadSound: {fileID: 0}
+    m_isAShotgun: 1
+  - m_name: pip
+    m_damage: 50
+    m_forceToApply: 20
+    m_weaponRange: 9999
+    m_ammoCapacity: 12
+    m_rateOfShot: 4
+    m_fireSound: {fileID: 0}
+    m_realoadSound: {fileID: 0}
+    m_isAShotgun: 0
+  - m_name: Hot
+    m_damage: 90
+    m_forceToApply: 20
+    m_weaponRange: 9999
+    m_ammoCapacity: 12
+    m_rateOfShot: 4
+    m_fireSound: {fileID: 0}
+    m_realoadSound: {fileID: 0}
+    m_isAShotgun: 0
+  - m_name: New Weapon
+    m_damage: 80
+    m_forceToApply: 20
+    m_weaponRange: 9999
+    m_ammoCapacity: 12
+    m_rateOfShot: 4
+    m_fireSound: {fileID: 0}
+    m_realoadSound: {fileID: 0}
+    m_isAShotgun: 0

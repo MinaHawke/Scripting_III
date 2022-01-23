@@ -14,4 +14,5 @@ public class WeaponInfo
     public float m_rateOfShot = 4;
     public AudioClip m_fireSound;
     public AudioClip m_realoadSound;
+    public bool m_isAShotgun;
 }
