@@ -5,18 +5,13 @@ using UnityEngine;
 
 public class VerySimplePistol : MonoBehaviour
 {
+    public SimpleWeaponInfo Weapon;
     public Transform m_raycastSpot;
-    public float m_damage = 80.0f;
-    public float m_forceToApply = 20.0f;
-    public float m_weaponRange = 9999.0f;
     public Texture2D m_crosshairTexture;
-    public AudioClip m_fireSound;
     private bool m_canShot;
     public int m_municionActual;
-    public int m_municionMax = 12;
     private float m_TiempoEntreDisparos;
     private float m_TiempoDesdeUltimoDisparo;
-    public int m_frecuenciaDeDisparos = 4;
     public int m_accuracyDropPerShot;
     private float m_currentAccuracy;
     public float m_accuracy;
@@ -24,8 +19,8 @@ public class VerySimplePistol : MonoBehaviour
     public static Action<int,int> OnShot;
     private void Start()
     {
-        m_municionActual = m_municionMax;
-        m_TiempoEntreDisparos = 1 / m_frecuenciaDeDisparos;
+        m_municionActual = Weapon.AmmoCapacity;
+        m_TiempoEntreDisparos = 1 / Weapon.RateOfShot;
         
     }
 
@@ -43,12 +38,12 @@ public class VerySimplePistol : MonoBehaviour
                     print(m_municionActual);
                     Shot();
                     m_municionActual--;
-                    OnShot?.Invoke(m_municionActual, m_municionMax);
+                    OnShot?.Invoke(m_municionActual, Weapon.AmmoCapacity);
 
                 }
                 else
                 {
-                    m_municionActual = m_municionMax;
+                    m_municionActual = Weapon.AmmoCapacity;
                 }
             }
         }
@@ -88,12 +83,12 @@ public class VerySimplePistol : MonoBehaviour
         
         RaycastHit hit;
         
-        if (Physics.Raycast(ray, out hit, m_weaponRange))
+        if (Physics.Raycast(ray, out hit, Weapon.WeaponRange))
         {
             Debug.Log("Hit " + hit.transform.name);
             if (hit.rigidbody)
             {
-                hit.rigidbody.AddForce(ray.direction * m_forceToApply);
+                hit.rigidbody.AddForce(ray.direction * Weapon.ForceToApply);
                 Debug.Log("Hit");
                 
             }
@@ -106,6 +101,6 @@ public class VerySimplePistol : MonoBehaviour
         }
         Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.red, 4);
 
-        GetComponent<AudioSource>().PlayOneShot(m_fireSound);
+        GetComponent<AudioSource>().PlayOneShot(Weapon.FireSound);
     }
 }
