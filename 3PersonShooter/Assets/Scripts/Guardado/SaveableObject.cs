@@ -11,9 +11,10 @@ public class SaveableObject : MonoBehaviour
 
     void Start()
     {
-        GenerateNewPlayer ();
+        //GenerateNewPlayer ();
         //SaveBin           ();
-        LoadJSON             ();
+        LoadBin             ();
+        LoadJSON            ();
     }
 
     void SaveBin           ()
