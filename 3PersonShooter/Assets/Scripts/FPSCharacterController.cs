@@ -69,4 +69,9 @@ public class FPSCharacterController : MonoBehaviour
     {
         GameManager.Instance.ReiniciarEscena();
     }
+    public void GuardarDatos()
+    {
+        PlayerPrefs.SetInt("Vida Jugador", m_health);
+        PlayerPrefs.SetInt("Municion Actual", GetComponentInChildren<VerySimplePistol>().m_municionActual);
+    }
 }

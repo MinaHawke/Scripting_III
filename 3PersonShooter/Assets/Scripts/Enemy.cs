@@ -45,6 +45,24 @@ public class Enemy : MonoBehaviour
             Morir();
         }
     }
+
+    public void GuardarVida()
+    {
+        int indiceEnemigo = -1;
+        for (int i = 0; i < GameManager.Instance.enemigos.Length; i++)
+        {
+            if (GameManager.Instance.enemigos[i] == this)
+            {
+                indiceEnemigo = i;
+                break;
+            }
+        }
+        if (indiceEnemigo != -1)
+        {
+            PlayerPrefs.SetInt("" + indiceEnemigo, enemyActualHp);
+        }
+    }
+
     public virtual void DetectarJugador()
     {
         DeteccionOido();
@@ -141,5 +159,14 @@ public class Enemy : MonoBehaviour
     protected virtual void Act()
     {
 
+    }
+
+    public void SetPatrolPoints(Transform PatrolParent)
+    {
+        patrolPoints = new Transform[PatrolParent.childCount];
+        for (int i = 0; i < PatrolParent.childCount; i++)
+        {
+            patrolPoints[i] = PatrolParent.GetChild(i);
+        }
     }
 }

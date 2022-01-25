@@ -16,7 +16,7 @@ MonoBehaviour:
   m_damage: 80
   m_forceToApply: 20
   m_weaponRange: 9999
-  m_ammoCapacity: 3
+  m_ammoCapacity: 12
   m_rateOfShot: 10
   m_fireSound: {fileID: 0}
   m_realoadSound: {fileID: 0}

@@ -19,8 +19,8 @@ MonoBehaviour:
     m_weaponRange: 9999
     m_ammoCapacity: 12
     m_rateOfShot: 4
-    m_fireSound: {fileID: 0}
-    m_realoadSound: {fileID: 0}
+    m_fireSound: {fileID: 8300000, guid: 67880ead61632b440a3aabe17058c1af, type: 3}
+    m_realoadSound: {fileID: 8300000, guid: bf0ac908ff2bc264c92835697540a2c2, type: 3}
     m_isAShotgun: 1
   - m_name: Pistol
     m_damage: 50
@@ -28,8 +28,8 @@ MonoBehaviour:
     m_weaponRange: 9999
     m_ammoCapacity: 12
     m_rateOfShot: 4
-    m_fireSound: {fileID: 0}
-    m_realoadSound: {fileID: 0}
+    m_fireSound: {fileID: 8300000, guid: 67880ead61632b440a3aabe17058c1af, type: 3}
+    m_realoadSound: {fileID: 8300000, guid: bf0ac908ff2bc264c92835697540a2c2, type: 3}
     m_isAShotgun: 0
   - m_name: Rifle
     m_damage: 90
@@ -37,6 +37,6 @@ MonoBehaviour:
     m_weaponRange: 9999
     m_ammoCapacity: 12
     m_rateOfShot: 4
-    m_fireSound: {fileID: 0}
-    m_realoadSound: {fileID: 0}
+    m_fireSound: {fileID: 8300000, guid: 67880ead61632b440a3aabe17058c1af, type: 3}
+    m_realoadSound: {fileID: 8300000, guid: bf0ac908ff2bc264c92835697540a2c2, type: 3}
     m_isAShotgun: 0

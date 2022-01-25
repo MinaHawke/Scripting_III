@@ -32,7 +32,7 @@ public class SaveableObject : MonoBehaviour
         m_player             = (Player)bf.Deserialize(file);
 
         Debug.Log(m_player.m_playerName);
-        Debug.Log(m_player.m_cardList[0].m_cardName);
+
     }
 
     void SaveXML           ()
@@ -51,7 +51,6 @@ public class SaveableObject : MonoBehaviour
 
         
         Debug.Log(m_player.m_playerName);
-        Debug.Log(m_player.m_cardList[0].m_cardName);
     }
 
     void SaveJSON          ()
@@ -66,7 +65,7 @@ public class SaveableObject : MonoBehaviour
         m_player = JsonUtility.FromJson<Player>(json);
 
         Debug.Log(m_player.m_playerName);
-        Debug.Log(m_player.m_cardList[0].m_cardName);
+
     }
 
     void GenerateNewPlayer ()
@@ -74,28 +73,7 @@ public class SaveableObject : MonoBehaviour
         // Creamos datos del jugador
         m_player                 = new Player();
         m_player.m_playerName    = "NoName";
-        m_player.m_gold          = 0;
-        m_player.m_wood          = 0;
-        m_player.m_iron          = 0;
-        m_player.m_stone         = 0;
-        m_player.m_victoryPoints = 0;
-        m_player.m_battlePoints  = 0;
-        m_player.m_cardList      = new List<Card>();
-        m_player.m_itemList      = new List<Item>();
 
-        // Creamos datos de las cartas
-        Card auxCard = new Card();
-        auxCard.m_cardName = "Poison Arrows";
-        auxCard.m_cost     = 0;
-        //... el resto de características.
-        m_player.m_cardList.Add(auxCard);
-
-        // Creamos datos de los items
-        Item auxItem = new Item();
-        auxItem.m_itemName = "Increase Power";
-        auxItem.m_power    = 50;
-        //... el resto de características.
-        m_player.m_itemList.Add(auxItem);
     }
 }
 

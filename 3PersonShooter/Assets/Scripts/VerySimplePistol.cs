@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class VerySimplePistol : MonoBehaviour
 {
-    public SimpleWeaponInfo Weapon;
+    public WeaponInfo Weapon;
     public Transform m_raycastSpot;
     public Texture2D m_crosshairTexture;
     private bool m_canShot;
@@ -17,15 +17,37 @@ public class VerySimplePistol : MonoBehaviour
     public float m_accuracy;
     public float m_accuracyRecoverPerSecond;
     public static Action<int,int> OnShot;
+    public WeaponList listaArmas;
+    private int armaActual;
+
     private void Start()
     {
-        m_municionActual = Weapon.AmmoCapacity;
-        m_TiempoEntreDisparos = 1 / Weapon.RateOfShot;
-        
+        Weapon = listaArmas.weaponList[armaActual];
+        m_municionActual = Weapon.m_ammoCapacity;
+        m_TiempoEntreDisparos = 1 / Weapon.m_rateOfShot;
+        ActivarModeloArma();
+
     }
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            armaActual = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            armaActual = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            armaActual = 2;
+        }
+
+        Weapon = listaArmas.weaponList[armaActual];
+
+        ActivarModeloArma();
+
         m_currentAccuracy = Mathf.Lerp(m_currentAccuracy, m_accuracy, m_accuracyRecoverPerSecond * Time.deltaTime);
 
         if (m_canShot)
@@ -38,12 +60,12 @@ public class VerySimplePistol : MonoBehaviour
                     print(m_municionActual);
                     Shot();
                     m_municionActual--;
-                    OnShot?.Invoke(m_municionActual, Weapon.AmmoCapacity);
+                    OnShot?.Invoke(m_municionActual, Weapon.m_ammoCapacity);
 
                 }
                 else
                 {
-                    m_municionActual = Weapon.AmmoCapacity;
+                    m_municionActual = Weapon.m_ammoCapacity;
                 }
             }
         }
@@ -83,12 +105,12 @@ public class VerySimplePistol : MonoBehaviour
         
         RaycastHit hit;
         
-        if (Physics.Raycast(ray, out hit, Weapon.WeaponRange))
+        if (Physics.Raycast(ray, out hit, Weapon.m_weaponRange))
         {
             Debug.Log("Hit " + hit.transform.name);
             if (hit.rigidbody)
             {
-                hit.rigidbody.AddForce(ray.direction * Weapon.ForceToApply);
+                hit.rigidbody.AddForce(ray.direction * Weapon.m_forceToApply);
                 Debug.Log("Hit");
                 
             }
@@ -101,6 +123,19 @@ public class VerySimplePistol : MonoBehaviour
         }
         Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.red, 4);
 
-        GetComponent<AudioSource>().PlayOneShot(Weapon.FireSound);
+        GetComponent<AudioSource>().PlayOneShot(Weapon.m_fireSound);
     }
+    public void ActivarModeloArma()
+    {
+        for (int i = 1; i < transform.childCount; i++)
+        {
+            if (i-1 == armaActual)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+            else
+                transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
 }

@@ -7,7 +7,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : PersistentSingleton<GameManager>
 {
     private FPSCharacterController player;
-    ShootingEnemy[] enemigos;
+    public ShootingEnemy[] enemigos;
+    public Transform[] enemigosPosicion;
+    public ShootingEnemy enemigoPrefab;
+    public Transform[] puntosPatrulla;
     public FPSCharacterController Player { get {
             if (player == null)
             {
@@ -31,10 +34,39 @@ public class GameManager : PersistentSingleton<GameManager>
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
-        enemigos = FindObjectsOfType<ShootingEnemy>();
+        this.enemigos = new ShootingEnemy[enemigosPosicion.Length];
+        for (int i = 0; i < enemigosPosicion.Length; i++)
+        {
+            ShootingEnemy enemigocreado = Instantiate(enemigoPrefab, enemigosPosicion[i].position, Quaternion.identity);
+            enemigocreado.SetPatrolPoints(puntosPatrulla[i]);
+            this.enemigos[i] = enemigocreado;
+        }
     }
 
-   public void ReiniciarEscena()
+    public void CargarDatos()
+    {
+        Enemy[] enemigos = FindObjectsOfType<Enemy>();
+        for (int i = 0; i < enemigos.Length; i++)
+        {
+            Destroy(enemigos[i].gameObject);
+        }
+
+        for (int i = 0; i < enemigosPosicion.Length; i++)
+        {
+            int vidaEnemigo = PlayerPrefs.GetInt("" + i);
+            if (vidaEnemigo > 0)
+            {
+                ShootingEnemy enemigocreado = Instantiate(enemigoPrefab, enemigosPosicion[i].position, Quaternion.identity);
+                enemigocreado.enemyActualHp = vidaEnemigo;
+                this.enemigos[i] = enemigocreado;
+                enemigocreado.SetPatrolPoints(puntosPatrulla[i]);
+            }
+        }
+        Player.m_health = PlayerPrefs.GetInt("Vida Jugador");
+        Player.GetComponentInChildren<VerySimplePistol>().m_municionActual = PlayerPrefs.GetInt("Municion Actual");
+    }
+
+    public void ReiniciarEscena()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
