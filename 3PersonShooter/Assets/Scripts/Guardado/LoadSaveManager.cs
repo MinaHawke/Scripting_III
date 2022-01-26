@@ -6,21 +6,35 @@ using UnityEngine;
 
 public class LoadSaveManager : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
-    public GameObject CanvasMenu;
+    //public static bool GameIsPaused = false;
+    //public GameObject CanvasMenu;
 
-    private void Update()
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.P))
+    //    {
+    //        if (GameIsPaused)
+    //        {
+    //            Resume();
+    //        }
+    //        else
+    //            Pause();
+    //    }
+    //}
+
+    public class ActivadorMenuGuardado
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        [SerializeField] GameObject canvasGuardado;
+
+        public void Update()
         {
-            if (GameIsPaused)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Resume();
+                canvasGuardado.SetActive(!canvasGuardado.activeSelf);
             }
-            else
-                Pause();
         }
     }
+
     public void SaveGameScene ()
     {
         Enemy[] enemigos = FindObjectsOfType<Enemy>();
@@ -36,16 +50,16 @@ public class LoadSaveManager : MonoBehaviour
         GameManager.Instance.CargarDatos();
 	}
 
-    void Pause()
-    {
-        CanvasMenu.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
-    }
-    void Resume()
-    {
-        CanvasMenu.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-    }
+    //void Pause()
+    //{
+    //    CanvasMenu.SetActive(true);
+    //    Time.timeScale = 0f;
+    //    GameIsPaused = true;
+    //}
+    //void Resume()
+    //{
+    //    CanvasMenu.SetActive(false);
+    //    Time.timeScale = 1f;
+    //    GameIsPaused = false;
+    //}
 }
