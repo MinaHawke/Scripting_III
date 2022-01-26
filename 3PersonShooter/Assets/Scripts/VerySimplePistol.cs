@@ -22,6 +22,7 @@ public class VerySimplePistol : MonoBehaviour
 
     private void Start()
     {
+        listaArmas = (WeaponList)Resources.Load("WeaponList.asset") as WeaponList;
         Weapon = listaArmas.weaponList[armaActual];
         m_municionActual = Weapon.m_ammoCapacity;
         m_TiempoEntreDisparos = 1 / Weapon.m_rateOfShot;
