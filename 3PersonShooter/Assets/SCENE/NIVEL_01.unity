@@ -1381,6 +1381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5a7c1a79db5844eb239183aec9d748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasMenu: {fileID: 782217118}
 --- !u!1001 &1210486631
 PrefabInstance:
   m_ObjectHideFlags: 0

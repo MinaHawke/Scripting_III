@@ -6,7 +6,22 @@ using UnityEngine;
 
 public class LoadSaveManager : MonoBehaviour
 {
-	public void SaveGameScene ()
+    public static bool GameIsPaused = false;
+    public GameObject CanvasMenu;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+                Pause();
+        }
+    }
+    public void SaveGameScene ()
     {
         Enemy[] enemigos = FindObjectsOfType<Enemy>();
         for (int i = 0; i < enemigos.Length; i++)
@@ -20,4 +35,17 @@ public class LoadSaveManager : MonoBehaviour
     {
         GameManager.Instance.CargarDatos();
 	}
+
+    void Pause()
+    {
+        CanvasMenu.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+    void Resume()
+    {
+        CanvasMenu.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
 }

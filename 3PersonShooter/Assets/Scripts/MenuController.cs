@@ -8,7 +8,7 @@ public class MenuController : MonoBehaviour
 {
     public Button StartButton;
     public Button ExitButton;
-
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,7 @@ public class MenuController : MonoBehaviour
         StartButton.onClick.AddListener(PantallaCarga);
         ExitButton.onClick.AddListener(CerrarJuego);
     }
+
 
     private void PantallaCarga()
     {
