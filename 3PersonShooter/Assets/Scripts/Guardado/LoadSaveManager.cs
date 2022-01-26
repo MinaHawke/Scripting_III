@@ -6,35 +6,6 @@ using UnityEngine;
 
 public class LoadSaveManager : MonoBehaviour
 {
-    //public static bool GameIsPaused = false;
-    //public GameObject CanvasMenu;
-
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.P))
-    //    {
-    //        if (GameIsPaused)
-    //        {
-    //            Resume();
-    //        }
-    //        else
-    //            Pause();
-    //    }
-    //}
-
-    public class ActivadorMenuGuardado
-    {
-        [SerializeField] GameObject canvasGuardado;
-
-        public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                canvasGuardado.SetActive(!canvasGuardado.activeSelf);
-            }
-        }
-    }
-
     public void SaveGameScene ()
     {
         Enemy[] enemigos = FindObjectsOfType<Enemy>();
@@ -50,16 +21,4 @@ public class LoadSaveManager : MonoBehaviour
         GameManager.Instance.CargarDatos();
 	}
 
-    //void Pause()
-    //{
-    //    CanvasMenu.SetActive(true);
-    //    Time.timeScale = 0f;
-    //    GameIsPaused = true;
-    //}
-    //void Resume()
-    //{
-    //    CanvasMenu.SetActive(false);
-    //    Time.timeScale = 1f;
-    //    GameIsPaused = false;
-    //}
 }
