@@ -10,6 +10,7 @@ public class ActivadorMenuGuardado : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
+            Cursor.visible = !Cursor.visible;
             canvasGuardado.SetActive(!canvasGuardado.activeSelf);
         }
     }
